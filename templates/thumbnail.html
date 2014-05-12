@@ -1,0 +1,26 @@
+﻿
+<!--http://codepen.io/ionic/pen/isfAJ-->
+
+<ion-view title="Playlists">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <div class="list">
+
+            <div class="list">
+
+                <a ng-repeat="item in items"
+                   href="#/{{item.id}}"
+                   class="item item-thumbnail-left">
+
+                    <img ng-src="{{ item.image }}">
+                    <h2>{{ item.album }}</h2>
+                    <h4>{{ item.artist }}</h4>
+                </a>
+
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>
