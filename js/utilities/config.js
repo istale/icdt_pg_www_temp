@@ -12,6 +12,7 @@ angular.module('utility.config', ['lodash'])
         siteUrl: '/',
         // apiUrl: 'http://icdt-dev.cloudapp.net:1337',
         apiUrl: 'http://icdt-dev.cloudapp.net:1337',
+        signalrUrl: 'http://icdt-dev-pg.azurewebsites.net/signalr',
 
         currentUser: false
     };

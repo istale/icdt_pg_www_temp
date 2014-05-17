@@ -1,12 +1,13 @@
 ﻿
-app.service('signalRSvc', ['$','$rootScope', function ($, $rootScope) {
+app.service('signalRSvc', ['$', '$rootScope', 'config', function ($, $rootScope, config) {
     var proxy = null;
 
     var initialize = function () {
 
         console.log('begin of signalRSvc intialize');
         //Getting the connection object
-        var connection = $.hubConnection();
+        var url = config.signalrUrl;
+        var connection = $.hubConnection(url);
 
         //Creating proxy
         proxy = connection.createHubProxy('testHub');
