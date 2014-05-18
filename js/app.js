@@ -8,14 +8,19 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'utility'])
 
 app.value('$', $);
 
-app.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+app.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
+    });
+});
+
+app.run(function (PushProcessingService) {
+    //run once for the app
+    PushProcessingService.initialize();
+});
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
