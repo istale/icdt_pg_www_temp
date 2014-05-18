@@ -56,7 +56,7 @@ app.factory('PushProcessingService', function ($state) {
 
                        // direct user here:
                        //window.location = "#/app";
-                       $state.transitionTo('app');
+                       $state.transitionTo('app.playlists');
 
                    }
 
