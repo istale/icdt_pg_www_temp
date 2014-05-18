@@ -79,7 +79,7 @@ function onNotificationGCM(e) {
                 // if the notification contains a soundname, play it.
                 //var my_media = new Media("/android_asset/www/"+e.soundname);
                 //my_media.play();
-                alert(e.payload.message);
+                alert(e.message);
             }
             else {
                 // otherwise we were launched because the user touched a notification in the notification tray.
