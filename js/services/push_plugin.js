@@ -2,7 +2,6 @@
 
 app.factory('PushProcessingService', function () {
     function onDeviceReady() {
-           alert('in onDeviceReady');
            console.info('NOTIFY  Device is ready.  Registering with GCM server');
            //register with google GCM server
            var pushNotification = window.plugins.pushNotification;
@@ -58,7 +57,7 @@ function onNotificationGCM(e) {
         case 'registered':
             if (e.regid.length > 0) {
                 console.log('REGISTERED with GCM Server -> REGID:' + e.regid + "");
-                alert('REGISTERED with GCM Server -> REGID:' + e.regid + "");
+                //alert('REGISTERED with GCM Server -> REGID:' + e.regid + "");
 
                 //call back to web service in Angular.  
                 //This works for me because in my code I have a factory called
