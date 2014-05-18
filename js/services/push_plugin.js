@@ -1,7 +1,8 @@
 ﻿//factory for processing push notifications.
 
 app.factory('PushProcessingService', function () {
-       function onDeviceReady() {
+    function onDeviceReady() {
+           alert('in onDeviceReady');
            console.info('NOTIFY  Device is ready.  Registering with GCM server');
            //register with google GCM server
            var pushNotification = window.plugins.pushNotification;
@@ -52,6 +53,7 @@ app.factory('PushProcessingService', function () {
 
 // ALL GCM notifications come through here. 
 function onNotificationGCM(e) {
+    alert('in onNotificationGCM');
     console.log('EVENT -> RECEIVED:' + e.event + '');
     switch (e.event) {
         case 'registered':
