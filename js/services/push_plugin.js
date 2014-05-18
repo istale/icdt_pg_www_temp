@@ -12,10 +12,10 @@ app.factory('PushProcessingService', function () {
            pushNotification.register(gcmSuccessHandler, gcmErrorHandler, { "senderID": 191058528719, "ecb": "onNotificationGCM" });
        }
        function gcmSuccessHandler(result) {
-           console.info('NOTIFY  pushNotification.register succeeded.  Result = ' + result)
+           alert('NOTIFY  pushNotification.register succeeded.  Result = ' + result)
        }
        function gcmErrorHandler(error) {
-           console.error('NOTIFY  ' + error);
+           alert('NOTIFY  ' + error);
        }
        return {
            initialize: function () {
@@ -65,10 +65,10 @@ function onNotificationGCM(e) {
                 //call back to web service in Angular.  
                 //This works for me because in my code I have a factory called
                 //      PushProcessingService with method registerID
-                var elem = angular.element(document.querySelector('[ng-app]'));
-                var injector = elem.injector();
-                var myService = injector.get('PushProcessingService');
-                myService.registerID(e.regid);
+                //var elem = angular.element(document.querySelector('[ng-app]'));
+                //var injector = elem.injector();
+                //var myService = injector.get('PushProcessingService');
+                //myService.registerID(e.regid);
             }
             break;
 
@@ -100,11 +100,11 @@ function onNotificationGCM(e) {
             break;
 
         case 'error':
-            console.log('ERROR -> MSG:' + e.msg + '');
+            alert('ERROR -> MSG:' + e.msg + '');
             break;
 
         default:
-            console.log('EVENT -> Unknown, an event was received and we do not know what it is');
+            alert('EVENT -> Unknown, an event was received and we do not know what it is');
             break;
     }
 }
