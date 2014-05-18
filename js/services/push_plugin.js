@@ -1,6 +1,6 @@
 ﻿//factory for processing push notifications.
 
-app.factory('PushProcessingService', function () {
+app.factory('PushProcessingService', function ($state) {
        function onDeviceReady() {
            console.info('NOTIFY  Device is ready.  Registering with GCM server');
            //register with google GCM server
@@ -55,8 +55,8 @@ app.factory('PushProcessingService', function () {
                            console.log('--BACKGROUND NOTIFICATION--' + '');
 
                        // direct user here:
-                       window.location = "#/playlists";
-
+                       //window.location = "#/playlists";
+                       $state.transitionTo('app.playlists');
 
                    }
 
