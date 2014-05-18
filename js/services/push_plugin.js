@@ -6,6 +6,7 @@ app.factory('PushProcessingService', function () {
            console.info('NOTIFY  Device is ready.  Registering with GCM server');
            //register with google GCM server
            var pushNotification = window.plugins.pushNotification;
+           alert(pushNotification);
 
            // kevin: senderID as google api project number
            pushNotification.register(gcmSuccessHandler, gcmErrorHandler, { "senderID": 191058528719, "ecb": "onNotificationGCM" });
