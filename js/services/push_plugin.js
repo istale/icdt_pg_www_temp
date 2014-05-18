@@ -6,16 +6,15 @@ app.factory('PushProcessingService', function () {
            console.info('NOTIFY  Device is ready.  Registering with GCM server');
            //register with google GCM server
            var pushNotification = window.plugins.pushNotification;
-           alert(pushNotification);
 
            // kevin: senderID as google api project number
-           pushNotification.register(gcmSuccessHandler, gcmErrorHandler, { "senderID": 191058528719, "ecb": "onNotificationGCM" });
+           pushNotification.register(gcmSuccessHandler, gcmErrorHandler, { "senderID": "191058528719", "ecb": "onNotificationGCM" });
        }
        function gcmSuccessHandler(result) {
-           alert('NOTIFY  pushNotification.register succeeded.  Result = ' + result)
+           console.info('NOTIFY  pushNotification.register succeeded.  Result = ' + result)
        }
        function gcmErrorHandler(error) {
-           alert('NOTIFY  ' + error);
+           console.error('NOTIFY  ' + error);
        }
        return {
            initialize: function () {
@@ -54,7 +53,6 @@ app.factory('PushProcessingService', function () {
 
 // ALL GCM notifications come through here. 
 function onNotificationGCM(e) {
-    alert('in onNotificationGCM');
     console.log('EVENT -> RECEIVED:' + e.event + '');
     switch (e.event) {
         case 'registered':
@@ -65,10 +63,10 @@ function onNotificationGCM(e) {
                 //call back to web service in Angular.  
                 //This works for me because in my code I have a factory called
                 //      PushProcessingService with method registerID
-                //var elem = angular.element(document.querySelector('[ng-app]'));
-                //var injector = elem.injector();
-                //var myService = injector.get('PushProcessingService');
-                //myService.registerID(e.regid);
+                var elem = angular.element(document.querySelector('[ng-app]'));
+                var injector = elem.injector();
+                var myService = injector.get('PushProcessingService');
+                myService.registerID(e.regid);
             }
             break;
 
@@ -100,11 +98,11 @@ function onNotificationGCM(e) {
             break;
 
         case 'error':
-            alert('ERROR -> MSG:' + e.msg + '');
+            console.log('ERROR -> MSG:' + e.msg + '');
             break;
 
         default:
-            alert('EVENT -> Unknown, an event was received and we do not know what it is');
+            console.log('EVENT -> Unknown, an event was received and we do not know what it is');
             break;
     }
 }
