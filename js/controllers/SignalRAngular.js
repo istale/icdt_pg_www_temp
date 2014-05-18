@@ -1,6 +1,6 @@
 ﻿
 
-app.controller('SignalRAngularCtrl', ['$scope', 'signalRSvc', '$rootScope', function ($scope, signalRSvc, $rootScope) {
+app.controller('SignalRAngularCtrl', ['$scope', 'signalRSvc', '$rootScope', 'PushProcessingService', function ($scope, signalRSvc, $rootScope, PushProcessingService) {
 
     console.log('begin of SignalRAngularCtrl');
 
@@ -29,5 +29,14 @@ app.controller('SignalRAngularCtrl', ['$scope', 'signalRSvc', '$rootScope', func
             updateGreetingMessage(message);
         });
     });
+
+
+    $scope.test_alert = function () {
+        alert('alert');
+    }
+
+    $scope.push_init = function () {
+        PushProcessingService.manual_initialize();
+    }
 
 }]);

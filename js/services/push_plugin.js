@@ -20,6 +20,9 @@ app.factory('PushProcessingService', function () {
                console.info('NOTIFY  initializing');
                document.addEventListener('deviceready', onDeviceReady, false);
            },
+           manual_initialize: function(){
+               onDeviceReady();
+           },
            registerID: function (id) {
                //Insert code here to store the user's ID on your notification server. 
                //You'll probably have a web service (wrapped in an Angular service of course) set up for this.  
@@ -31,6 +34,7 @@ app.factory('PushProcessingService', function () {
                //        console.error('NOTIFY  Registration failed');
                //    }
                //});
+
            },
            //unregister can be called from a settings area.
            unregister: function () {
@@ -58,10 +62,10 @@ function onNotificationGCM(e) {
                 //call back to web service in Angular.  
                 //This works for me because in my code I have a factory called
                 //      PushProcessingService with method registerID
-                //var elem = angular.element(document.querySelector('[ng-app]'));
-                //var injector = elem.injector();
-                //var myService = injector.get('PushProcessingService');
-                //myService.registerID(e.regid);
+                var elem = angular.element(document.querySelector('[ng-app]'));
+                var injector = elem.injector();
+                var myService = injector.get('PushProcessingService');
+                myService.registerID(e.regid);
             }
             break;
 
