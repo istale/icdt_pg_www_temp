@@ -56,7 +56,7 @@ app.factory('PushProcessingService', ['$state', function ($state) {
 
                        // direct user here:
                        //window.location = "#/app/playlists";
-                       $state.transitionTo('app.playlists');
+                       $state.go('app.playlists');
                    }
 
                    console.log('MESSAGE -> MSG: ' + e.payload.message + '');
