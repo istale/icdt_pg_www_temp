@@ -41,7 +41,7 @@ app.controller('CameraCanvasCtrl', ['$', '$scope', '$ionicSideMenuDelegate', fun
 			    img.src = imageURI;
 
 			    //取得 Canvas物件
-			    var ctx = angular.element('#camera_canvas').getContext('2d');
+			    var ctx = document.getElementById('camera_canvas').getContext('2d');
 			    //繪製拍照出來的相片到Canvas畫布上
 			    ctx.drawImage(img, 0, 0, 300, 400);
 			},
