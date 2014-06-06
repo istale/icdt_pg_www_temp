@@ -17,11 +17,14 @@ app.controller('CameraCanvasCtrl', ['$', '$scope', '$ionicSideMenuDelegate', fun
         destinationType = navigator.camera.DestinationType.FILE_URI;
     });
 
-    var img = new Image();//DOM圖片元件
+    
 
 
     // take picture
     $scope.take_photo = function () {
+
+        var img = new Image();//DOM圖片元件
+
         //console.log("got camera button click");
         var options = {
             quality: 50,
@@ -39,12 +42,13 @@ app.controller('CameraCanvasCtrl', ['$', '$scope', '$ionicSideMenuDelegate', fun
 			    //$scope.mypicture = imageURI;
 
 			    img.src = imageURI;
+			    console.log('assign img.src');
 			    console.log(img);
 			    //取得 Canvas物件
 			    var ctx = document.getElementById('camera_canvas').getContext('2d');
 			    console.log(ctx);
 			    //繪製拍照出來的相片到Canvas畫布上
-			    ctx.drawImage(img, 500, 500);
+			    ctx.drawImage(img, 300, 400);
 			},
 			function (err) {
 			    //console.log("got camera error ", err);
