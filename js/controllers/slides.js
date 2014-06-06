@@ -1,7 +1,7 @@
 ﻿
 /*http://codepen.io/ionic/pen/AjgEB*/
 
-app.controller('SlidesCtrl', ['$scope', '$state', '$$ionicSlideBoxDelegate', function ($scope, $state, $ionicSlideBoxDelegate) {
+app.controller('SlidesCtrl', ['$scope', '$state', '$ionicSlideBoxDelegate', function ($scope, $state, $ionicSlideBoxDelegate) {
 
     $scope.next = function () {
         $ionicSlideBoxDelegate.next();

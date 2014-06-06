@@ -8,19 +8,22 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'utility'])
 
 app.value('$', $);
 
-app.run(function ($ionicPlatform) {
+app.run(function ($ionicPlatform, PushProcessingService) {
     $ionicPlatform.ready(function () {
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
     });
-});
 
-app.run(function (PushProcessingService) {
-    //run once for the app
+    // Push Notification
     PushProcessingService.initialize();
 });
+
+//app.run(function (PushProcessingService) {
+//    //run once for the app
+//    PushProcessingService.initialize();
+//});
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -68,6 +71,41 @@ app.config(function($stateProvider, $urlRouterProvider) {
           controller: 'PlaylistCtrl'
         }
       }
+    })
+    .state('app.thumbnail', {
+        url: "/thumbnail",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/thumbnail.html",
+                controller: 'ThumbnailCtrl'
+            }
+        }
+    })
+    .state('app.cards', {
+        url: "/cards",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/cards.html"
+            }
+        }
+    })
+    .state('app.slides', {
+        url: "/slides",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/slides.html",
+                controller: 'SlidesCtrl'
+            }
+        }
+    })
+    .state('app.camera_canvas', {
+        url: "/camera_canvas",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/camera_canvas.html",
+                controller: 'CameraCanvasCtrl'
+            }
+        }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
