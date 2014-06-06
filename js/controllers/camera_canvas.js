@@ -39,11 +39,12 @@ app.controller('CameraCanvasCtrl', ['$', '$scope', '$ionicSideMenuDelegate', fun
 			    //$scope.mypicture = imageURI;
 
 			    img.src = imageURI;
-
+			    console.log(img);
 			    //取得 Canvas物件
 			    var ctx = document.getElementById('camera_canvas').getContext('2d');
+			    console.log(ctx);
 			    //繪製拍照出來的相片到Canvas畫布上
-			    ctx.drawImage(img, 0, 0, 300, 400);
+			    ctx.drawImage(img, 500, 500);
 			},
 			function (err) {
 			    //console.log("got camera error ", err);
